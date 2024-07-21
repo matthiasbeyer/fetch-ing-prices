@@ -16,24 +16,14 @@
       rec {
         packages = {
           default = pkgs.python3Packages.buildPythonApplication {
-            name = "fetch-ing-prices";
+            name = "fetch_ing_price";
             version = "2024-07-21";
 
-            src = pkgs.fetchFromGitHub {
-              owner = "matthiasbeyer";
-              repo = "fetch-ing-prices";
-              rev = "a3c75253f7e1fc24eb4e269cdf43cc810b0aea0f";
-              sha256 = "sha256-oc+cl8XtPgDNummh9FQIF3yLdeNo3p4ijBCzdmnqzl4=";
-            };
+            src = ./.;
 
             buildInputs = [
               pkgs.python3Packages.requests
             ];
-
-            installPhase = ''
-              mkdir $out/bin -p
-              cp -v fetch-ing-prices.py $out/bin/fetch-ing-prices
-            '';
 
             meta = {
               homepage = "https://github.com/matthiasbeyer/fetch-ing-prices";
@@ -41,13 +31,13 @@
               license = pkgs.lib.licenses.mit;
               maintainers = [ pkgs.lib.maintainers.matthiasbeyer ];
               platforms = pkgs.lib.platforms.all;
-              mainProgram = "fetch-ing-prices";
+              mainProgram = "fetch_ing_price";
             };
           };
         };
 
         apps.default = flake-utils.lib.mkApp {
-          name = "fetch-ing-prices";
+          name = "fetch_ing_price";
           drv = packages.default;
         };
 

@@ -27,14 +27,12 @@ def read_requirements(path):
     ]
 
 setup(
-    name='fetch-ing-prices',
+    name='fetch_ing_price',
     description="Fetch Stock prices from the ING website",
     url="https://github.com/matthiasbeyer/fetch-ing-prices/",
     version='0.1.0',
-    packages=find_packages(include=['fetch-ing-prices']),
+    py_modules=["fetch_ing_price"],
     install_requires=read_requirements("requirements.txt"),
-    entry_points={
-        'console_scripts': ['fetch-ing-prices=fetch-ing-prices.__main__:main']
-    }
+    entry_points={"console_scripts": ["fetch_ing_price = fetch_ing_price:main"]},
 )
 

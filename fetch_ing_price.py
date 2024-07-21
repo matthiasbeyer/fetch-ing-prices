@@ -46,7 +46,7 @@ def prices_ing(our_name, chart, exchangeId, currencyId, timerange='Intraday'):
 
 def init_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="fetch.py",
+        prog="fetch_ing_price",
         description=""
     )
     parser.add_argument(
@@ -64,7 +64,7 @@ def init_argparse() -> argparse.ArgumentParser:
 
     return parser
 
-def __main__():
+def main():
     parser = init_argparse()
     args = parser.parse_args()
 
@@ -77,3 +77,6 @@ def __main__():
         j["our_name"] = price.our_name
         j["price"] = price.price
         print(json.dumps(j))
+
+if __name__ == "__main__":  # pragma: no cover
+    main()
