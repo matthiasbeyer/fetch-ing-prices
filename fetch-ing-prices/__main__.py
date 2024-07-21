@@ -64,15 +64,16 @@ def init_argparse() -> argparse.ArgumentParser:
 
     return parser
 
-parser = init_argparse()
-args = parser.parse_args()
+def __main__():
+    parser = init_argparse()
+    args = parser.parse_args()
 
-prices = prices_ing(args.shortname, args.chart, args.exchange_id, args.currency_id)
+    prices = prices_ing(args.shortname, args.chart, args.exchange_id, args.currency_id)
 
-for price in prices:
-    j = {}
-    j["date"] = price.date
-    j["shortname"] = args.shortname
-    j["our_name"] = price.our_name
-    j["price"] = price.price
-    print(json.dumps(j))
+    for price in prices:
+        j = {}
+        j["date"] = price.date
+        j["shortname"] = args.shortname
+        j["our_name"] = price.our_name
+        j["price"] = price.price
+        print(json.dumps(j))
